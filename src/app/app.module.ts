@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodosComponent } from './componentes/todos/todos.component';
 import { AlgunosComponent } from './componentes/algunos/algunos.component';
+import { NosaleComponent } from './componentes/nosale/nosale.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodosComponent,
-    AlgunosComponent
+    AlgunosComponent,
+    NosaleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { NosaleComponent } from '../componentes/nosale/nosale.component';
 import { ParametrosService } from '../servicio/parametros.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HabilitaPorServicioGuard implements CanActivate {
+export class HabilitaPorServicioGuard implements CanActivate , CanDeactivate<NosaleComponent> {
   
  
   constructor(public servicio:ParametrosService) {
@@ -14,6 +15,15 @@ export class HabilitaPorServicioGuard implements CanActivate {
     
   }
   
+canDeactivate(
+  component: NosaleComponent,
+  currentRoute: ActivatedRouteSnapshot,
+  currentState: RouterStateSnapshot,
+  nextState: RouterStateSnapshot): boolean{
+
+    return this.servicio.pasa;
+  }
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean{
